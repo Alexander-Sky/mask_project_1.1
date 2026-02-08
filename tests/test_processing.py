@@ -23,23 +23,27 @@ def test_filter_canceled():
 
 
 # Тесты для sort_by_date
-def test_sort_desc():
-    result = sort_by_date(test_data)
-    expected_order = [
-        "2019-07-03T18:35:29.512364",
-        "2018-10-14T08:21:33.419441",
-        "2018-09-12T21:27:25.241689",
-        "2018-06-30T02:08:58.425572",
+def test_sort_by_date():
+    # Ожидаемый порядок при сортировке по убыванию
+    expected_desc = [
+        '2019-07-03T18:35:29.512364',
+        '2018-10-14T08:21:33.419441',
+        '2018-09-12T21:27:25.241689',
+        '2018-06-30T02:08:58.425572'
     ]
-    assert [item["date"] for item in result] == expected_order
 
-
-def test_sort_asc():
-    result = sort_by_date(test_data, False)
-    expected_order = [
-        "2018-06-30T02:08:58.425572",
-        "2018-09-12T21:27:25.241689",
-        "2018-10-14T08:21:33.419441",
-        "2019-07-03T18:35:29.512364",
+    # Ожидаемый порядок при сортировке по возрастанию
+    expected_asc = [
+        '2018-06-30T02:08:58.425572',
+        '2018-09-12T21:27:25.241689',
+        '2018-10-14T08:21:33.419441',
+        '2019-07-03T18:35:29.512364'
     ]
-    assert [item["date"] for item in result] == expected_order
+
+    # Проверяем сортировку по убыванию
+    result_desc = sort_by_date(test_data)
+    assert [item['date'] for item in result_desc] == expected_desc
+
+    # Проверяем сортировку по возрастанию
+    result_asc = sort_by_date(test_data, False)
+    assert [item['date'] for item in result_asc] == expected_asc
