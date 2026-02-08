@@ -1,5 +1,4 @@
-from datetime import datetime
-from typing import Dict, List
+from typing import Dict, List  # Оставляем только один импорт
 
 
 def filter_by_state(data: List[Dict], state: str = 'EXECUTED') -> List[Dict]:
@@ -21,11 +20,9 @@ def sort_by_date(data: List[Dict], descending: bool = True) -> List[Dict]:
     :param descending: флаг сортировки по убыванию (True - убывание, False - возрастание)
     :return: отсортированный список операций
     """
-    # Разбиваем длинную строку на несколько для соблюдения PEP8
+    # Для работы с датой будем использовать строковое сравнение
     return sorted(
         data,
-        key=lambda x: datetime.fromisoformat(
-            x['date'].replace('T', ' ')
-        ),
+        key=lambda x: x['date'],
         reverse=descending
     )
