@@ -1,7 +1,7 @@
 from typing import Dict, List  # Оставляем только один импорт
 
 
-def filter_by_state(data: List[Dict], state: str = 'EXECUTED') -> List[Dict]:
+def filter_by_state(data: List[Dict], state: str = "EXECUTED") -> List[Dict]:
     """
     Фильтрует список операций по статусу
 
@@ -9,7 +9,7 @@ def filter_by_state(data: List[Dict], state: str = 'EXECUTED') -> List[Dict]:
     :param state: значение состояния для фильтрации (по умолчанию 'EXECUTED')
     :return: отфильтрованный список операций
     """
-    return [item for item in data if item.get('state') == state]
+    return [item for item in data if item.get("state") == state]
 
 
 def sort_by_date(data: List[Dict], descending: bool = True) -> List[Dict]:
@@ -21,8 +21,4 @@ def sort_by_date(data: List[Dict], descending: bool = True) -> List[Dict]:
     :return: отсортированный список операций
     """
     # Для работы с датой будем использовать строковое сравнение
-    return sorted(
-        data,
-        key=lambda x: x['date'],
-        reverse=descending
-    )
+    return sorted(data, key=lambda x: x["date"], reverse=descending)
